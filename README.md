@@ -71,18 +71,58 @@ We are now at the last part of step by step guide on how to simulate STM32 proje
 
 
 ## STM 32 CUBE PROGRAM :
+```
+Devaloped by : Adhithiyan.k
+Ref No : 212222230006
 
+#include "main.h"
+#include "stdbool.h"
+bool buttonstatus;
 
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+ 
+  HAL_Init();
+
+  SystemClock_Config();
+
+  MX_GPIO_Init();
+  
+  while (1)
+  {
+	  buttonstatus=HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+	  if(buttonstatus==0)
+	  {
+	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+	  		  HAL_Delay(2500);
+	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+	  		  HAL_Delay(2500);
+	  }
+	  else
+	  {
+	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
+                          HAL_Delay(2500);
+	  }
+  }
+}
+```
 
 
 ## Output screen shots of proteus  :
+## LED OFF :
+![led off](https://github.com/AdhithiyanK/EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED-WITH-PROTEUS-/assets/121029258/f1c890ec-428b-4f87-a84d-3133c09d9ef8)
 
-
+## LED ON :
+![led on](https://github.com/AdhithiyanK/EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED-WITH-PROTEUS-/assets/121029258/c474c0f1-d4c6-4c82-9787-55d3e55376f3)
 
 
 ## Proteus layout(Add pdf screen shot of circuit here)
  
- 
+ ![proteus](https://github.com/AdhithiyanK/EXPERIMENT--03-SIMULATION-OF-PUSHBUTTON-AND-LED-WITH-PROTEUS-/assets/121029258/9c577f73-4754-4b97-9945-53c50ad96181)
+
  
  
 ## Result :
